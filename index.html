@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>تبدیل متن بلند به رشتو | توییت‌ساز فارسی</title>
+  <meta name="description" content="تبدیل متن بلند به رشته توییت به صورت خودکار و ساده. تولید سریع رشتو برای توییتر با امکان کپی و اشتراک‌گذاری در تلگرام و واتساپ.">
+  <meta name="keywords" content="توییت ساز، رشته توییت، رشتو، tweet thread maker، توییتر فارسی، تبدیل متن بلند، رشتوی خودکار">
+  <meta property="og:title" content="توییت‌ساز فارسی - تبدیل متن بلند به رشتو">
+  <meta property="og:description" content="متن خود را وارد کنید و در لحظه به یک رشته توییت آماده کپی و اشتراک‌گذاری تبدیل کنید.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tweetyar.ir">
+  <meta property="og:image" content="https://tweetyar.ir/og-image.jpg">
+  <link rel="canonical" href="https://tweetyar.ir">
+
+  <link rel="stylesheet" href="style.css">
+
+    <!-- برای نمایش اپ روی موبایل -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#007bff" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png" />
+
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#007bff">
+
+</head>
+<body>
+  <nav class="main-nav">
+    <a href="index.html"> صفحه اصلی</a>
+    <a href="about.html"> درباره ما</a>
+    <a href="contact.html"> تماس با ما</a>
+  </nav>
+
+
+  <div class="container">
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 تغییر حالت روشن/تیره</button>
+    <h1>🧵 توییت‌ساز فارسی (Tweet Thread Maker)</h1>
+    <div>
+      <button onclick="clearSavedText()">پاک‌کردن متن ذخیره‌شده 🗑️</button>
+    </div>
+    <textarea id="inputText" placeholder="متن بلند خود را اینجا وارد کنید..." oninput="updateLiveCounter()"></textarea>
+    <div class="live-count" id="liveCounter">تعداد کاراکتر: 0</div>
+    <button onclick="minifyText()">🔍 فشرده‌سازی متن</button>
+    <button onclick="generateTweets()">✂️ تقسیم کن به رشتو</button>
+    <button onclick="copyAllTweets()">📋 کپی کل رشتو</button>
+
+    <div class="share-all-buttons">
+      <button onclick="shareAllTweetsTelegram()">اشتراک‌گذاری در تلگرام ✈️</button>
+      <button onclick="shareAllTweetsWhatsApp()">اشتراک‌گذاری در واتساپ 🟢</button>
+    </div>
+    <div id="output"></div>
+
+      
+    <!-- Emoji selector -->
+   <div class="emoji-selector">
+      <div class="emoji-input-wrapper">
+        <button onclick="toggleEmojiPicker()">انتخاب ادامه‌دهنده 🔽</button>
+        <input type="text" id="continueSymbol" value="»" maxlength="5" onchange="saveSymbol()" />
+      </div>
+      <div id="emojiPickerWrapper">
+        <div id="emojiPicker">
+          <span onclick="selectSymbol('»')">»</span>
+          <span onclick="selectSymbol('➡️')">➡️</span>
+          <span onclick="selectSymbol('👇')">👇</span>
+          <span onclick="selectSymbol('...')">...</span>
+          <span onclick="selectSymbol('🔽')">🔽</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- END Emoji selector -->
+
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('✅ Service Worker registered!', reg))
+          .catch(err => console.warn('❌ Service Worker failed', err));
+      });
+    }
+  </script>
+</body>
+</html>
